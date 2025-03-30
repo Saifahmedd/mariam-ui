@@ -1,0 +1,168 @@
+/* General styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+  }
+  
+  /* Container */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+  }
+  
+  .card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 900px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  /* File Upload */
+  .file-upload input {
+    padding: 12px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: all 0.3s;
+  }
+  
+  .file-upload input:hover {
+    border-color: #2980b9;
+  }
+  
+  /* Buttons */
+  .button-group {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  button:hover {
+    background: #3498db;
+    transform: scale(1.05);
+  }
+  
+  /* Table Section */
+  .table-section {
+    margin-top: 25px;
+    text-align: left;
+    padding-left: 20px;
+  }
+  
+  .table-section h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #34495e;
+  }
+  
+  .dataset-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .redundant-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border-radius: 1px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: none; /* Remove all borders */
+  }
+  
+  .redundant-table td {
+    padding: 12px;
+    text-align: center;
+    border: none; /* Remove individual cell borders */
+  }
+  
+  .redundant-table th {
+    border: none; /* Ensure no borders on headers */
+  }
+    
+  thead {
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+  }
+  
+  th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 16px;
+  }
+  
+  tbody tr:nth-child(even) {
+    background: #f7f7f7;
+  }
+  
+  /* Redundancy Section */
+  .redundancy-section {
+    margin-top: 25px;
+    text-align: left;
+    padding-left: 20px;
+  }
+  
+  .redundancy-section h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #34495e;
+  }
+  
+  .redundancy-section ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .redundancy-section li {
+    background: #ecf0f1;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+  }

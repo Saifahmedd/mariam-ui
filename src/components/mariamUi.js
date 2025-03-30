@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as XLSX from "xlsx";
+import "./App.css"; // Import external CSS file
 
 const App = () => {
   const [file, setFile] = useState(null);
@@ -61,116 +62,63 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 p-6">
-      <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl text-center">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6">
-          📚 Curriculum Redundancy Checker
-        </h1>
+    <div className="container">
+      <div className="card">
+        <h1>📚 Curriculum Redundancy Checker</h1>
 
-        {/* File Upload */}
-        <div className="mb-4 flex justify-center">
-          <input
-            type="file"
-            onChange={handleFileUpload}
-            className="block w-full max-w-xs text-sm text-gray-500 
-                     file:mr-4 file:py-2 file:px-4 
-                     file:rounded-lg file:border-0 
-                     file:text-sm file:font-semibold 
-                     file:bg-blue-600 file:text-white 
-                     hover:file:bg-blue-700 cursor-pointer transition"
-          />
+        <div className="file-upload">
+          <input type="file" onChange={handleFileUpload} />
         </div>
 
-        {/* Buttons */}
-        <div className="flex justify-center space-x-4">
-          <button
-            onClick={checkRedundancy}
-            className="bg-green-600 text-white px-6 py-2 rounded-lg 
-                      font-semibold shadow-md transition hover:bg-green-700 hover:scale-105"
-          >
-            🔍 Check Redundancy
-          </button>
-          <button
-            onClick={() => setTableData([])}
-            className="bg-red-600 text-white px-6 py-2 rounded-lg 
-                      font-semibold shadow-md transition hover:bg-red-700 hover:scale-105"
-          >
-            ❌ Clear Data
-          </button>
+        <div className="button-group">
+          <button onClick={checkRedundancy}>🔍 Check Redundancy</button>
+          <button onClick={() => setTableData([])}>❌ Clear Data</button>
         </div>
 
-        {/* Uploaded Excel Table */}
-        <div className="mt-6 w-full">
-          <h2 className="text-xl font-semibold text-gray-700">
-            📄 Uploaded Dataset
-          </h2>
+        <div className="table-section">
+          <h2>📄 Uploaded Dataset</h2>
           {tableData.length > 0 ? (
-            <div className="overflow-x-auto mt-4">
-              <table className="w-full border border-gray-400 bg-white shadow-lg">
-                <thead>
-                  <tr className="bg-gray-200 text-gray-800">
-                    {tableData[0].map((header, index) => (
-                      <th
-                        key={index}
-                        className="border border-gray-400 p-3 text-left"
-                      >
-                        {header}
-                      </th>
+            <table className="dataset-table">
+
+              <thead>
+                <tr>
+                  {tableData[0].map((header, index) => (
+                    <th key={index}>{header}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {tableData.slice(1).map((row, rowIndex) => (
+                  <tr key={rowIndex}>
+                    {row.map((cell, cellIndex) => (
+                      <td key={cellIndex}>{cell}</td>
                     ))}
                   </tr>
-                </thead>
-                <tbody>
-                  {tableData.slice(1).map((row, rowIndex) => (
-                    <tr
-                      key={rowIndex}
-                      className={`border border-gray-400 ${
-                        rowIndex % 2 === 0 ? "bg-gray-100" : "bg-gray-50"
-                      }`}
-                    >
-                      {row.map((cell, cellIndex) => (
-                        <td
-                          key={cellIndex}
-                          className="border border-gray-400 p-3"
-                        >
-                          {cell}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           ) : (
-            <p className="text-gray-500 mt-2">No data to display.</p>
+            <p>No data to display.</p>
           )}
         </div>
 
-        {/* Redundant Course Pairs */}
-        <div className="mt-6 w-full text-left">
-          <h2 className="text-xl font-semibold text-gray-700">
-            🔁 Redundant Course Pairs
-          </h2>
+        <div className="redundancy-section">
+          <h2>🔁 Redundant Course Pairs</h2>
           {redundancies.length > 0 ? (
-            <ul className="mt-3 space-y-3">
-              {redundancies.map((item, index) => (
-                <li
-                  key={index}
-                  className="bg-gray-200 p-4 rounded-lg shadow-md flex justify-between items-center"
-                >
-                  <span>
-                    <strong>{item.pair[0]}</strong> ↔{" "}
-                    <strong>{item.pair[1]}</strong> {"  "} 
-                  </span>
-                  <span className="text-blue-600 font-semibold">
-                    ({item.similarity.toFixed(2)})
-                  </span>
-
-
-                </li>
-              ))}
-            </ul>
+            <table className="redundant-table">
+              <tbody>
+                {redundancies.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.pair[0]}</td>
+                    <td className="centered-column">↔</td>
+                    <td>{item.pair[1]}</td>
+                    <td className="centered-column">{item.similarity.toFixed(2)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           ) : (
-            <p className="text-gray-500 mt-2">No redundant subjects found.</p>
+            <p>No redundant subjects found.</p>
           )}
         </div>
       </div>
